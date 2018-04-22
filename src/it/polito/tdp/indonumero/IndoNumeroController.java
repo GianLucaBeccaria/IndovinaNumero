@@ -69,6 +69,43 @@ public class IndoNumeroController {
     		txtLog.appendText("Devi inserire un numero \n");
     		return ;
     	}
+    	
+    	try {
+    	int num = Integer.parseInt(numS);
+    	
+    	if(num==this.segreto) {
+    		txtLog.appendText("Hai vinto!\n");
+    		
+    		boxGioco.setDisable(true);
+    		btnNuova.setDisable(false);
+    		this.inGame = false;
+    	}
+    	else {
+    		this.tentativi++;
+    		txtCurr.setText(""+this.tentativi);
+    		
+    		if(this.tentativi==this.TMAX) {
+    			txtLog.appendText(String.format("Hai perso, il numero era %d\n", this.segreto));
+    			boxGioco.setDisable(true);
+        		btnNuova.setDisable(false);
+        		this.inGame = false;
+    		}
+    		else {
+    			if(num<segreto) {
+    				txtLog.appendText("Troppo basso\n");
+    			}
+    			else {
+    				txtLog.appendText("Troppo alto\n");
+    			}
+    		}
+    		
+    	}
+    	
+    	}
+    	catch(NumberFormatException ex) {
+    		txtLog.appendText("Dato inserito non è numerico");
+    		return ;
+    	}
 
     }
 
