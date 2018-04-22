@@ -58,6 +58,10 @@ public class IndoNumeroController {
     	boxGioco.setDisable(false);
     	txtCurr.setText(""+tentativi);
     	txtMax.setText(String.format("%d", this.TMAX));
+    	txtLog.clear();
+    	txtTentativo.clear();
+    	
+    	txtLog.setText(String.format("Indovina un numero tra %d e %d ", 1 , this.NMAX));
     	
     }
 
